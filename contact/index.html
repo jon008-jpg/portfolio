@@ -15,6 +15,31 @@
     </nav>
 
     <h1>Contact Me</h1>
-    <p>Feel free to reach out via email or LinkedIn!</p>
+
+    <form action="mailto:jon008@ucsd.edu" method="POST" enctype="text/plain">
+        <label>
+            Email:
+            <input type="email" name="email" value="visitor@example.com">
+        </label>
+        
+        <br><br>
+
+        <label>
+            Subject:
+            <input name="subject" value="Inquiry about Data Science Projects">
+        </label>
+
+        <br><br>
+
+        <label>
+            Message:
+            <textarea name="body">Hi Jocelyn, I saw your portfolio and would love to chat about your machine learning work!</textarea>
+        </label>
+
+        <br><br>
+
+        <button>Send Email</button>
+    </form>
+
 </body>
 </html>
