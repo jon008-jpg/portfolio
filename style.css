@@ -4,5 +4,6 @@ body {
 
   /* New styles for Lab 2 */
   max-width: 100ch;   /* Limits width to ~100 characters wide */
-  margin-inline: max(1em, (100% - 100ch) / 2);
+  margin-inline: auto;
+  padding: 1em;
 }
