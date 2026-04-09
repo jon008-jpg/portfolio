@@ -1,5 +1,4 @@
 :root {
-  /* Your chosen Matcha Green accent */
   --color-accent: oklch(59.23% 0.13664 146.754); 
 }
 
@@ -14,7 +13,6 @@ body {
   padding: 1em;
 }
 
-/* --- Navigation Styling --- */
 
 nav {
     display: flex;
@@ -30,20 +28,17 @@ nav a {
     padding: 0.5em;
 }
 
-/* The Active Tab: Stay Gray */
 nav a.current {
     border-bottom: 0.4em solid oklch(80% 3% 200);
     padding-bottom: 0.1em;
 }
 
-/* The Hover Effect: Only turn green if it's NOT the current page */
 nav a:not(.current):hover {
   border-bottom: 0.4em solid var(--color-accent);
   background-color: oklch(from var(--color-accent) 95% 5% h);
   padding-bottom: 0.1em;
 }
 
-/* --- Step 3: Contact Form Layout --- */
 
 input, textarea, button {
   font: inherit;
@@ -63,7 +58,6 @@ label {
 
 button {
     grid-column: 1 / -1;
-    /* Adding a little padding to the button to make it look nicer */
     padding: 0.5em;
     cursor: pointer;
 }
