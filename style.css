@@ -1,6 +1,8 @@
 body {
-  /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
+  /* Existing styles from Lab 1 */
   font: 100%/1.5 system-ui;
+
+  /* New styles for Lab 2 */
+  max-width: 100ch;   /* Limits width to ~100 characters wide */
+  margin-inline: max(1em, (100% - 100ch) / 2);
 }
