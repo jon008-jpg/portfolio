@@ -1,3 +1,15 @@
+:root {
+  /* This is the reddish color from your lab */
+  --color-accent: oklch(65% 50% 0); 
+  
+  /* OPTIONAL: Uncomment the line below if you'd prefer a Matcha Green accent! */
+  /* --color-accent: oklch(75% 0.15 135); */
+}
+
+html {
+  accent-color: var(--color-accent);
+}
+
 body {
   /* Existing styles from Lab 1 */
   font: 100%/1.5 system-ui;
@@ -24,4 +36,14 @@ nav a {
 nav a.current {
     border-bottom: 0.4em solid oklch(80% 3% 200);
     padding-bottom: 0.1em; /* Reduced padding to compensate for thick border */
+}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  
+  /* The "Wanna go further" step: creates a very light tint of your accent color */
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+  
+  /* Keep the padding consistent with your .current class so the text doesn't move */
+  padding-bottom: 0.1em;
 }
