@@ -1,9 +1,6 @@
 :root {
-  /* This is the reddish color from your lab */
+  /* Your chosen Matcha Green accent */
   --color-accent: oklch(59.23% 0.13664 146.754); 
-  
-  /* OPTIONAL: Uncomment the line below if you'd prefer a Matcha Green accent! */
-  /* --color-accent: oklch(75% 0.15 135); */
 }
 
 html {
@@ -11,16 +8,16 @@ html {
 }
 
 body {
-  /* Existing styles from Lab 1 */
   font: 100%/1.5 system-ui;
-
-  /* New styles for Lab 2 */
-  max-width: 100ch;   /* Limits width to ~100 characters wide */
+  max-width: 100ch;
   margin-inline: auto;
   padding: 1em;
 }
+
+/* --- Navigation Styling --- */
+
 nav {
-    display: flex; /* Nav is the direct parent of the <a> tags */
+    display: flex;
     margin-bottom: 2em;
     border-bottom: 1px solid oklch(80% 3% 200);
 }
@@ -32,18 +29,45 @@ nav a {
     color: inherit;
     padding: 0.5em;
 }
-/* Step 2.3: The "Current" Page Link */
+
+/* The Active Tab: Stay Gray */
 nav a.current {
     border-bottom: 0.4em solid oklch(80% 3% 200);
-    padding-bottom: 0.1em; /* Reduced padding to compensate for thick border */
+    padding-bottom: 0.1em;
 }
 
-nav a:hover {
+/* The Hover Effect: Only turn green if it's NOT the current page */
+nav a:not(.current):hover {
   border-bottom: 0.4em solid var(--color-accent);
-  
-  /* The "Wanna go further" step: creates a very light tint of your accent color */
   background-color: oklch(from var(--color-accent) 95% 5% h);
-  
-  /* Keep the padding consistent with your .current class so the text doesn't move */
   padding-bottom: 0.1em;
+}
+
+/* --- Step 3: Contact Form Layout --- */
+
+input, textarea, button {
+  font: inherit;
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 1em;
+}
+
+label {
+    display: grid;
+    grid-template-columns: subgrid; 
+    grid-column: 1 / -1;
+}
+
+button {
+    grid-column: 1 / -1;
+    /* Adding a little padding to the button to make it look nicer */
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+textarea {
+    min-height: 100px;
 }
