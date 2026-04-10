@@ -89,3 +89,63 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 400%;     
 }
+
+section {
+    margin-top: 3em;
+}
+
+section h2 {
+    color: var(--color-accent); /* Using Step 2.4 Variable */
+    border-bottom: 2px solid oklch(80% 3% 200); /* Using the Nav's gray */
+    padding-bottom: 0.2em;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 2. Applying Step 2 (Flexbox) to Entry Headers */
+/* This puts the Company name on the left and the Date on the right */
+article header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap; /* Keeps it responsive for mobile */
+}
+
+article h3 {
+    margin: 0;
+    font-size: 1.25em;
+}
+
+/* 3. Applying Step 1 (Box Model) & Typography */
+time {
+    font-weight: bold;
+    color: oklch(50% 0 0); /* Subtle gray to emphasize the job title */
+}
+
+article ul {
+    margin-top: 0.5em;
+    padding-left: 1.2em;
+}
+
+article li {
+    margin-bottom: 0.4em;
+}
+
+/* 4. Applying Step 4.2 (Responsive Grid) for Skills */
+/* If you add a <section class="skills"> with a <ul> to your HTML */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+    gap: 1em;
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background: oklch(from var(--color-accent) 95% 5% h); /* Step 2.4 Hover color */
+    padding: 0.5em;
+    border-radius: 4px;
+    text-align: center;
+    border-left: 3px solid var(--color-accent);
+}
