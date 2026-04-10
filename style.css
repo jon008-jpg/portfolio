@@ -67,19 +67,19 @@ textarea {
 }
 
 .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    gap: 1em;
-    margin-top: 2em;
-}
+  display: grid;
+  /* Step 4.2: Columns adapt automatically based on screen width */
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
 
-.projects article {
+  /* Step 4.3: Using nesting and subgrid for alignment */
+  & article {
     display: grid;
     grid-template-rows: subgrid;
-    grid-row: span 3;
+    grid-row: span 3; /* Matches the 3 children: h2, img, p */
     gap: 1em;
-}
-
-.projects h2 {
-    margin: 0; 
+    & h2 {
+      margin: 0;
+    }
+  }
 }
