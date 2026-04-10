@@ -103,13 +103,11 @@ section h2 {
     letter-spacing: 1px;
 }
 
-/* 2. Applying Step 2 (Flexbox) to Entry Headers */
-/* This puts the Company name on the left and the Date on the right */
 article header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    flex-wrap: wrap; /* Keeps it responsive for mobile */
+    flex-wrap: wrap; 
 }
 
 article h3 {
@@ -117,10 +115,9 @@ article h3 {
     font-size: 1.25em;
 }
 
-/* 3. Applying Step 1 (Box Model) & Typography */
 time {
     font-weight: bold;
-    color: oklch(50% 0 0); /* Subtle gray to emphasize the job title */
+    color: oklch(50% 0 0); 
 }
 
 article ul {
@@ -132,8 +129,7 @@ article li {
     margin-bottom: 0.4em;
 }
 
-/* 4. Applying Step 4.2 (Responsive Grid) for Skills */
-/* If you add a <section class="skills"> with a <ul> to your HTML */
+
 .skills-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
