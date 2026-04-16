@@ -95,3 +95,30 @@ select.addEventListener('input', function (event) {
   setColorScheme(color);
   localStorage.colorScheme = color; // Save to storage
 });
+
+// Step 5: Better contact form handling
+const form = document.querySelector('form');
+
+form?.addEventListener('submit', function (event) {
+    // Stop the browser from doing its default submission
+    event.preventDefault();
+
+    // Create a FormData object to easily extract input values
+    const data = new FormData(form);
+
+    // Start building our mailto URL
+    // form.action is "mailto:jon008@ucsd.edu"
+    let url = form.action + "?";
+
+    // Loop through the form fields (subject and body)
+    for (let [name, value] of data) {
+        // Encode characters like spaces to %20 so email clients understand them
+        url += `${name}=${encodeURIComponent(value)}&`;
+    }
+
+    // Remove the very last '&' character we added in the loop
+    url = url.slice(0, -1);
+
+    // Open the user's email client with our perfectly formatted URL
+    location.href = url;
+});
