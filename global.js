@@ -63,3 +63,35 @@ for (let p of pages) {
 
     nav.append(a);
 }
+document.body.insertAdjacentHTML(
+  'afterbegin',
+  `
+	<label class="color-scheme">
+		Theme:
+		<select>
+			<option value="light dark">Automatic</option>
+			<option value="light">Light</option>
+			<option value="dark">Dark</option>
+		</select>
+	</label>`
+);
+
+const select = document.querySelector('.color-scheme select');
+
+// Helper function to set the scheme and sync the dropdown
+function setColorScheme(color) {
+  document.documentElement.style.setProperty('color-scheme', color);
+  select.value = color;
+}
+
+// Step 4.5: Load saved preference on page load
+if ("colorScheme" in localStorage) {
+  setColorScheme(localStorage.colorScheme);
+}
+
+// Step 4.4: Handle user changes
+select.addEventListener('input', function (event) {
+  const color = event.target.value;
+  setColorScheme(color);
+  localStorage.colorScheme = color; // Save to storage
+});
