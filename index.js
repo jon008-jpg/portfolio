@@ -1,18 +1,23 @@
-// 1. Import our reusable functions from global.js
-// Note: We use './' because global.js is in the same folder as index.js
-import { fetchJSON, renderProjects } from './global.js';
+// 1. Update your import line to include fetchGitHubData
+import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 
-// 2. Fetch all projects from the lib folder
-const projects = await fetchJSON('./lib/projects.json');
+// ... (Your existing projects fetching/rendering code) ...
 
-// 3. Slice the array to get only the first 3 projects
-const latestProjects = projects.slice(0, 3);
+// 2. Fetch your GitHub data
+// Using your username 'jon008-jpg'
+const githubData = await fetchGitHubData('jon008-jpg');
 
-// 4. Select the container where we want to put the projects
-const projectsContainer = document.querySelector('.projects');
+// 3. Select the container
+const profileStats = document.querySelector('#profile-stats');
 
-// 5. Render the sliced list into the container
-// We check if the container exists first to prevent errors
-if (projectsContainer) {
-    renderProjects(latestProjects, projectsContainer, 'h2');
+// 4. Inject the data if the container exists
+if (profileStats) {
+    profileStats.innerHTML = `
+          <dl>
+            <dt>Public Repos</dt><dd>${githubData.public_repos}</dd>
+            <dt>Public Gists</dt><dd>${githubData.public_gists}</dd>
+            <dt>Followers</dt><dd>${githubData.followers}</dd>
+            <dt>Following</dt><dd>${githubData.following}</dd>
+          </dl>
+      `;
 }

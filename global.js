@@ -163,3 +163,9 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         containerElement.appendChild(article);
     });
 }
+
+// Add this to global.js
+export async function fetchGitHubData(username) {
+    // We return the promise created by fetchJSON
+    return fetchJSON(`https://api.github.com/users/${username}`);
+}

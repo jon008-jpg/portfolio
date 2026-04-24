@@ -154,3 +154,28 @@ article li {
     right: 5rem;
     font-size: 80%;
 }
+
+#profile-stats dl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+    background: color-mix(in oklch, var(--color-accent), canvas 5%);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+#profile-stats dt {
+    grid-row: 1; /* Force all labels to the first row */
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: oklch(50% 0 0);
+}
+
+#profile-stats dd {
+    grid-row: 2; /* Force all numbers to the second row */
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
