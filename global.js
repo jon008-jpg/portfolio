@@ -144,22 +144,21 @@ export async function fetchJSON(url) {
 }
 
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
-    // 1. Clear the container to prevent duplicates
     containerElement.innerHTML = '';
 
-    // 2. Loop through each project in the array
     projects.forEach(project => {
         const article = document.createElement('article');
         
-        // 3. Build the internal HTML using a Template Literal
-        // We use the headingLevel variable to decide which tag to use (h2, h3, etc.)
+        // Added the year here so you can see it on the page!
         article.innerHTML = `
             <${headingLevel}>${project.title}</${headingLevel}>
             <img src="${project.image}" alt="${project.title}">
-            <p>${project.description}</p>
+            <div class="project-info">
+                <p>${project.description}</p>
+                <p class="project-year">Year: ${project.year}</p>
+            </div>
         `;
         
-        // 4. Add the article to the page
         containerElement.appendChild(article);
     });
 }
