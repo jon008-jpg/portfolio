@@ -1,5 +1,23 @@
 [
   {
+    "title": "DSC106 Project 2: Deceptive Visualizations",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Conducted Exploratory Data Analysis to create visualizations that intentionally mislead viewers about the true trends in a dataset, demonstrating the importance of ethical data representation."
+  },
+  {
+    "title": "Portfolio Site Development",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built a responsive personal portfolio using modern JavaScript, CSS grid, and dynamic data fetching from the GitHub API."
+  },
+  {
+    "title": "DSC106 Project 1: Food Processing Visualization",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Designed a captivating visualizationthat ranks retail food items based on their level of processing and nutritional value."
+  },
+  {
     "title": "Power Outage Analysis",
     "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
@@ -42,28 +60,10 @@
     "description": "Trained a convolutional neural network on the MNIST dataset to achieve high accuracy in handwritten digit identification."
   },
   {
-    "title": "DSC106 Project 1: Food Processing Visualization",
-    "year": "2026",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Designed a captivating visualizationthat ranks retail food items based on their level of processing and nutritional value."
-  },
-  {
     "title": "Autonomous Pathfinding Algorithm",
     "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Simulated an A* search algorithm for an autonomous robot navigating through a dynamic maze with moving obstacles."
-  },
-  {
-    "title": "DSC106 Project 2: Deceptive Visualizations",
-    "year": "2026",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Conducted Exploratory Data Analysis to create visualizations that intentionally mislead viewers about the true trends in a dataset, demonstrating the importance of ethical data representation."
-  },
-  {
-    "title": "Portfolio Site Development",
-    "year": "2026",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Built a responsive personal portfolio using modern JavaScript, CSS grid, and dynamic data fetching from the GitHub API."
   },
   {
     "title": "Database Schema Optimization",
