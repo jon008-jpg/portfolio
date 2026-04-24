@@ -1,16 +1,28 @@
-// 1. Update your import line to include fetchGitHubData
 import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 
-// ... (Your existing projects fetching/rendering code) ...
+// --- PART 1: PROJECTS ---
+// Fetch all projects from the lib folder
+const projects = await fetchJSON('./lib/projects.json');
 
-// 2. Fetch your GitHub data
-// Using your username 'jon008-jpg'
+// Slice the array to get only the first 3 projects
+const latestProjects = projects.slice(0, 3);
+
+// Select the projects container
+const projectsContainer = document.querySelector('.projects');
+
+// Render the sliced list into the container
+if (projectsContainer) {
+    renderProjects(latestProjects, projectsContainer, 'h2');
+}
+
+// --- PART 2: GITHUB STATS ---
+// Fetch your GitHub data
 const githubData = await fetchGitHubData('jon008-jpg');
 
-// 3. Select the container
+// Select the profile stats container
 const profileStats = document.querySelector('#profile-stats');
 
-// 4. Inject the data if the container exists
+// Inject the data if the container exists
 if (profileStats) {
     profileStats.innerHTML = `
           <dl>
