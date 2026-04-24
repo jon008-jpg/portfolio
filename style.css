@@ -170,7 +170,7 @@ article li {
     grid-row: 1; /* Force all labels to the first row */
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: oklch(50% 0 0);
+    color: oklch(0% 0 0);
 }
 
 #profile-stats dd {
