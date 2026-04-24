@@ -122,3 +122,44 @@ form?.addEventListener('submit', function (event) {
     // Open the user's email client with our perfectly formatted URL
     location.href = url;
 });
+
+export async function fetchJSON(url) {
+    try {
+        // 1. Start the request
+        const response = await fetch(url);
+
+        // 2. Check if the file exists/is accessible
+        if (!response.ok) {
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        }
+
+        // 3. Parse the raw response into a JSON object
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        // 4. Catch and log any network or parsing errors
+        console.error('Error fetching or parsing JSON data:', error);
+    }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    // 1. Clear the container to prevent duplicates
+    containerElement.innerHTML = '';
+
+    // 2. Loop through each project in the array
+    projects.forEach(project => {
+        const article = document.createElement('article');
+        
+        // 3. Build the internal HTML using a Template Literal
+        // We use the headingLevel variable to decide which tag to use (h2, h3, etc.)
+        article.innerHTML = `
+            <${headingLevel}>${project.title}</${headingLevel}>
+            <img src="${project.image}" alt="${project.title}">
+            <p>${project.description}</p>
+        `;
+        
+        // 4. Add the article to the page
+        containerElement.appendChild(article);
+    });
+}
