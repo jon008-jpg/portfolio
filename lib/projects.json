@@ -1,62 +1,74 @@
 [
-    {
-        "title": "Lorem ipsum dolor sit.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sed fugiat at."
-    },
-    {
-        "title": "Nisi adipisci voluptate nihil?",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Cum culpa accusamus, modi assumenda omnis mollitia distinctio reprehenderit maxime consectetur corporis?"
-    },
-    {
-        "title": "Vel temporibus consectetur ad!",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quaerat quae quasi architecto totam minus ipsam blanditiis molestias necessitatibus optio voluptate."
-    },
-    {
-        "title": "Voluptatem vel id accusamus.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Magni dicta laudantium animi eos placeat, nulla non quos consectetur dignissimos repellendus."
-    },
-    {
-        "title": "Sint nam ab voluptates?",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Nostrum, obcaecati ipsum? Officia deleniti enim dolores eaque culpa consectetur odit ullam."
-    },
-    {
-        "title": "Facere, nesciunt. Officiis, laboriosam?",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Cumque dolor dolorum accusantium vel deleniti velit culpa earum tempore veritatis eum."
-    },
-    {
-        "title": "Inventore unde beatae consectetur.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Aut, voluptas quos. Provident, adipisci beatae dolorum obcaecati impedit ipsa perferendis saepe!"
-    },
-    {
-        "title": "Quo atque beatae sint!",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Optio distinctio exercitationem dolorum nulla vero sint ad pariatur. Hic, cumque voluptas?"
-    },
-    {
-        "title": "Itaque minima in expedita.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Cumque delectus quod ipsum dolores soluta repudiandae id nam, nihil hic temporibus."
-    },
-    {
-        "title": "Nisi laborum quas culpa.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Labore itaque consequatur eligendi at debitis dolorem magnam, cumque veritatis. Dolorum, minus."
-    },
-    {
-        "title": "Dolorem perspiciatis iste non.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Dolore dicta expedita quis aspernatur quas voluptatem delectus maiores quasi doloribus eos!"
-    },
-    {
-        "title": "Vitae nemo quas earum!",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Similique commodi nulla esse natus voluptatum cum, laborum blanditiis placeat et incidunt?"
-    }
+  {
+    "title": "Power Outage Analysis",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Investigated geographic and seasonal patterns in major U.S. power outages to determine the most significant causes of disruption."
+  },
+  {
+    "title": "Customer Segmentation via K-Means",
+    "year": "2023",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Applied unsupervised learning to categorize e-commerce customers into distinct personas based on purchasing frequency and total spend."
+  },
+  {
+    "title": "Predictive Modeling for Sales",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built a multi-linear regression model to forecast quarterly sales figures based on historical performance and market indicators."
+  },
+  {
+    "title": "Sentiment Analysis on Social Media",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Utilized natural language processing (NLP) to classify public sentiment on trending technology topics using the Twitter API."
+  },
+  {
+    "title": "Educational Tech Kit Design",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Developed a modular hardware kit intended to teach elementary school students the basics of electronic circuits and sustainable design."
+  },
+  {
+    "title": "Image Compression via PCA",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Implemented Principal Component Analysis to reduce image file sizes while preserving essential visual features and variance."
+  },
+  {
+    "title": "Neural Network for Digit Recognition",
+    "year": "2023",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Trained a convolutional neural network on the MNIST dataset to achieve high accuracy in handwritten digit identification."
+  },
+  {
+    "title": "DSC106 Project 1: Food Processing Visualization",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Designed a captivating visualizationthat ranks retail food items based on their level of processing and nutritional value."
+  },
+  {
+    "title": "Autonomous Pathfinding Algorithm",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Simulated an A* search algorithm for an autonomous robot navigating through a dynamic maze with moving obstacles."
+  },
+  {
+    "title": "DSC106 Project 2: Deceptive Visualizations",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Conducted Exploratory Data Analysis to create visualizations that intentionally mislead viewers about the true trends in a dataset, demonstrating the importance of ethical data representation."
+  },
+  {
+    "title": "Portfolio Site Development",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built a responsive personal portfolio using modern JavaScript, CSS grid, and dynamic data fetching from the GitHub API."
+  },
+  {
+    "title": "Database Schema Optimization",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Redesigned a relational database for a mock library system to reduce query latency and ensure data integrity compliance."
+  }
 ]
