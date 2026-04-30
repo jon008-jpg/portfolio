@@ -179,3 +179,12 @@ article li {
     font-size: 2rem;
     font-weight: bold;
 }
+
+/* Step 1.1: Scoped styling for the pie chart SVG */
+#projects-plot {
+    max-width: 20em;
+    margin-block: 2em;
+    display: block;      /* Ensures margins work correctly */
+    margin-inline: auto; /* Centers the plot if you prefer it centered */
+    overflow: visible;   /* Important for later when we add labels that might poke out */
+}
