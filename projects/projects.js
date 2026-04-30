@@ -1,4 +1,3 @@
-// <root repo>/projects/projects.js
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 import { fetchJSON, renderProjects } from '../global.js';
 
@@ -29,3 +28,31 @@ d3.select('#projects-plot')
   .append('path')
   .attr('d', arc)
   .attr('fill', 'red');
+
+// --- Step 1.4: Drawing a static pie chart with D3 ---
+
+// 1. Define the data and colors
+let data = [1, 2];
+let colors = ['gold', 'purple'];
+
+// 2. Setup the generators
+let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+let sliceGenerator = d3.pie();
+
+// 3. Generate the data for the slices (angles)
+let arcData = sliceGenerator(data);
+
+// 4. Generate the path strings from those angles
+let arcs = arcData.map((d) => arcGenerator(d));
+
+// 5. Select the SVG and append paths
+let svg = d3.select('#projects-plot');
+
+// Clear any existing paths before drawing new ones (good practice!)
+svg.selectAll('path').remove();
+
+arcs.forEach((arc, idx) => {
+    svg.append('path')
+       .attr('d', arc)
+       .attr('fill', colors[idx]); // Indexing into our colors array
+});
