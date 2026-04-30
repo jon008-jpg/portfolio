@@ -7,17 +7,6 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// // Step 2.1: Get an array of all navigation links
-// let navLinks = $$("nav a");
-
-// // Step 2.2: Find the link that matches the current page's URL
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname
-// );
-
-// // Step 2.3: Add the 'current' class to that specific link (if found)
-// currentLink?.classList.add('current');
-
 // 1. Define your pages
 let pages = [
   { url: '', title: 'Home' },
@@ -31,7 +20,7 @@ let pages = [
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
   ? "/"                  
-  : "/portfolio/"; // Adjusted for your repo name
+  : "/portfolio/"; 
 
 // 3. Create the <nav> and add it to the top of the body
 let nav = document.createElement('nav');
@@ -42,114 +31,88 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
 
-    // Adjust the URL if it's internal (relative)
     url = !url.startsWith('http') ? BASE_PATH + url : url;
 
-    // Create the link element
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
 
-    // Highlight the current page
     a.classList.toggle(
         'current',
         a.host === location.host && a.pathname === location.pathname
     );
 
-    // Open external links in a new tab
     if (a.host !== location.host) {
         a.target = "_blank";
     }
 
     nav.append(a);
 }
+
+// 5. Insert the theme selector BEFORE the nav
 document.body.insertAdjacentHTML(
   'afterbegin',
   `
-	<label class="color-scheme">
-		Theme:
-		<select>
-			<option value="light dark">Automatic</option>
-			<option value="light">Light</option>
-			<option value="dark">Dark</option>
-		</select>
-	</label>`
+    <label class="color-scheme">
+        Theme:
+        <select>
+            <option value="light dark">Automatic</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </label>`
 );
 
 const select = document.querySelector('.color-scheme select');
 
-// Helper function to set the scheme and sync the dropdown
 function setColorScheme(color) {
   document.documentElement.style.setProperty('color-scheme', color);
   select.value = color;
 }
 
-// Step 4.5: Load saved preference on page load
 if ("colorScheme" in localStorage) {
   setColorScheme(localStorage.colorScheme);
 }
 
-// Step 4.4: Handle user changes
 select.addEventListener('input', function (event) {
   const color = event.target.value;
   setColorScheme(color);
-  localStorage.colorScheme = color; // Save to storage
+  localStorage.colorScheme = color; 
 });
 
 // Step 5: Better contact form handling
 const form = document.querySelector('form');
 
 form?.addEventListener('submit', function (event) {
-    // Stop the browser from doing its default submission
     event.preventDefault();
-
-    // Create a FormData object to easily extract input values
     const data = new FormData(form);
-
-    // Start building our mailto URL
-    // form.action is "mailto:jon008@ucsd.edu"
     let url = form.action + "?";
 
-    // Loop through the form fields (subject and body)
     for (let [name, value] of data) {
-        // Encode characters like spaces to %20 so email clients understand them
         url += `${name}=${encodeURIComponent(value)}&`;
     }
 
-    // Remove the very last '&' character we added in the loop
     url = url.slice(0, -1);
-
-    // Open the user's email client with our perfectly formatted URL
     location.href = url;
 });
 
 export async function fetchJSON(url) {
     try {
-        // 1. Start the request
         const response = await fetch(url);
-
-        // 2. Check if the file exists/is accessible
         if (!response.ok) {
             throw new Error(`Failed to fetch projects: ${response.statusText}`);
         }
-
-        // 3. Parse the raw response into a JSON object
         const data = await response.json();
         return data;
-
     } catch (error) {
-        // 4. Catch and log any network or parsing errors
         console.error('Error fetching or parsing JSON data:', error);
     }
 }
 
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
     containerElement.innerHTML = '';
-
     projects.forEach(project => {
         const article = document.createElement('article');
-        
-        // Wrap description and year in a <div> to keep them in the same grid cell
         article.innerHTML = `
             <${headingLevel}>${project.title}</${headingLevel}>
             <img src="${project.image}" alt="${project.title}">
@@ -158,13 +121,10 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
                 <p class="project-year">c. ${project.year}</p>
             </div>
         `;
-        
         containerElement.appendChild(article);
     });
 }
 
-// Add this to global.js
 export async function fetchGitHubData(username) {
-    // We return the promise created by fetchJSON
     return fetchJSON(`https://api.github.com/users/${username}`);
 }
