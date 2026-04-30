@@ -14,7 +14,7 @@ body {
   padding: 1em;
 }
 
-
+/* --- NAVIGATION --- */
 nav {
     display: flex;
     margin-bottom: 2em;
@@ -41,7 +41,7 @@ nav a:not(.current):hover {
   padding-bottom: 0.1em;
 }
 
-
+/* --- FORM ELEMENTS --- */
 input, textarea, button, select {
   font: inherit;
 }
@@ -68,21 +68,34 @@ textarea {
     min-height: 100px;
 }
 
+/* --- PROJECTS GRID (FIXED SECTION) --- */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-  gap: 1em;
-
-  & article {
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: span 3; 
-    & h2 {
-      margin: 0;
-    }
-  }
+  gap: 2em;
 }
 
+.projects article {
+  display: grid;
+  /* Instead of subgrid (which needs parent rows), we define 3 rows for the article content */
+  grid-template-rows: auto auto 1fr; 
+  gap: 1em;
+}
+
+.projects article h2 {
+  margin: 0;
+}
+
+/* Added to ensure images have a consistent height and don't collapse */
+.projects article img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #eee;
+  border-radius: 8px;
+}
+
+/* --- TYPOGRAPHY --- */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;     
   text-wrap: balance;  
@@ -105,6 +118,7 @@ section h2 {
     letter-spacing: 1px;
 }
 
+/* --- ARTICLE DETAILS --- */
 article header {
     display: flex;
     justify-content: space-between;
@@ -131,7 +145,7 @@ article li {
     margin-bottom: 0.4em;
 }
 
-
+/* --- SKILLS --- */
 .skills-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
@@ -148,6 +162,7 @@ article li {
     border-left: 3px solid var(--color-accent);
 }
 
+/* --- THEME SELECTOR --- */
 .color-scheme {
     position: absolute;
     top: 2rem;
@@ -155,6 +170,7 @@ article li {
     font-size: 80%;
 }
 
+/* --- GITHUB STATS --- */
 #profile-stats dl {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -167,24 +183,24 @@ article li {
 }
 
 #profile-stats dt {
-    grid-row: 1; /* Force all labels to the first row */
+    grid-row: 1;
     font-size: 0.9rem;
     text-transform: uppercase;
     color: oklch(0% 0 0);
 }
 
 #profile-stats dd {
-    grid-row: 2; /* Force all numbers to the second row */
+    grid-row: 2;
     margin: 0;
     font-size: 2rem;
     font-weight: bold;
 }
 
-/* Step 1.1: Scoped styling for the pie chart SVG */
+/* --- D3 PIE CHART --- */
 #projects-plot {
     max-width: 20em;
     margin-block: 2em;
-    display: block;      /* Ensures margins work correctly */
-    margin-inline: auto; /* Centers the plot if you prefer it centered */
-    overflow: visible;   /* Important for later when we add labels that might poke out */
+    display: block;      
+    margin-inline: auto; 
+    overflow: visible;   
 }
