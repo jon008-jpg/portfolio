@@ -149,13 +149,13 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     projects.forEach(project => {
         const article = document.createElement('article');
         
-        // Added the year here so you can see it on the page!
+        // Wrap description and year in a <div> to keep them in the same grid cell
         article.innerHTML = `
             <${headingLevel}>${project.title}</${headingLevel}>
             <img src="${project.image}" alt="${project.title}">
             <div class="project-info">
                 <p>${project.description}</p>
-                <p class="project-year">Year: ${project.year}</p>
+                <p class="project-year">c. ${project.year}</p>
             </div>
         `;
         
