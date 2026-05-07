@@ -16,20 +16,28 @@ if (projectsContainer) {
 }
 
 // --- PART 2: GITHUB STATS ---
-// Fetch your GitHub data
 const githubData = await fetchGitHubData('jon008-jpg');
-
-// Select the profile stats container
 const profileStats = document.querySelector('#profile-stats');
 
-// Inject the data if the container exists
-if (profileStats) {
+if (profileStats && githubData) {
     profileStats.innerHTML = `
-          <dl>
-            <dt>Public Repos</dt><dd>${githubData.public_repos}</dd>
-            <dt>Public Gists</dt><dd>${githubData.public_gists}</dd>
-            <dt>Followers</dt><dd>${githubData.followers}</dd>
-            <dt>Following</dt><dd>${githubData.following}</dd>
+          <dl class="stats">
+            <div class="stat-pair">
+                <dt>Followers</dt>
+                <dd>${githubData.followers}</dd>
+            </div>
+            <div class="stat-pair">
+                <dt>Following</dt>
+                <dd>${githubData.following}</dd>
+            </div>
+            <div class="stat-pair">
+                <dt>Public Repos</dt>
+                <dd>${githubData.public_repos}</dd>
+            </div>
+            <div class="stat-pair">
+                <dt>Public Gists</dt>
+                <dd>${githubData.public_gists}</dd>
+            </div>
           </dl>
       `;
 }

@@ -168,3 +168,28 @@ li.selected {
     color: oklch(50% 0 0);
     font-weight: bold;
 }
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-block: 2em;
+}
+
+.stat-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stats dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: oklch(50% 0 0); /* Muted gray label */
+}
+
+.stats dd {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 300; /* Clean, light-weight numbers */
+}
