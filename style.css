@@ -193,3 +193,80 @@ li.selected {
   margin: 0;
   font-weight: 300; /* Clean, light-weight numbers */
 }
+
+/* --- SCATTERPLOT GRIDLINES --- */
+
+.gridlines {
+  stroke-opacity: 0.15; /* Make them very faint */
+}
+
+/* Hide the vertical axis line for gridlines to reduce clutter */
+.gridlines path {
+  display: none; 
+}
+
+/* Night time: First 6 ticks and ticks from 20 onwards */
+.gridlines .tick:nth-child(-n+6) line,
+.gridlines .tick:nth-child(n+20) line {
+  stroke: oklch(50% 0.1 250); /* Cool blue */
+  stroke-width: 1.5; /* Optional: make night lines slightly thicker */
+}
+
+/* Day time: Ticks between 7 and 19 */
+.gridlines .tick:nth-child(n+7):nth-child(-n+19) line {
+  stroke: oklch(60% 0.15 40); /* Warm orange */
+}
+
+/* --- TOOLTIP STYLING --- */
+dl.info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5em 1em;
+    margin: 0;
+
+    /* Step 3.3: Transition for a smooth fade effect */
+    transition-duration: 500ms;
+    transition-property: opacity, visibility;
+}
+
+/* Step 3.3: Hide logic with transitions */
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 1000;
+
+  /* Glassmorphism Effect */
+  background-color: color-mix(in oklch, canvas, transparent 20%);
+  backdrop-filter: blur(12px); 
+  
+  /* Spacing and Borders */
+  padding: 1rem 1.5rem;
+  border-radius: 12px; 
+  border: 1px solid oklch(80% 0 0 / 20%); 
+  
+  /* Advanced Elevation (Layered Shadow) */
+  box-shadow: 
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* We removed pointer-events: none so we can click the commit link */
+}
+
+/* --- DOT INTERACTION --- */
+circle {
+    transition: 200ms;
+    transform-origin: center;
+    transform-box: fill-box;
+    cursor: crosshair;
+}
+
+circle:hover {
+    transform: scale(1.5);
+    fill: var(--color-accent); 
+}
