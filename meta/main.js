@@ -55,7 +55,6 @@ function processCommits(data) {
     });
 }
 
-// Tooltip Content Updater
 function renderTooltipContent(commit) {
   const link = document.getElementById('commit-link');
   const date = document.getElementById('commit-date');
@@ -73,17 +72,15 @@ function renderTooltipContent(commit) {
   lines.textContent = commit.totalLines;
 }
 
-// Tooltip Visibility Toggle
 function updateTooltipVisibility(isVisible) {
   const tooltip = document.getElementById('commit-tooltip');
   tooltip.hidden = !isVisible;
 }
 
-// NEW: Step 3.4 Tooltip Position Updater
 function updateTooltipPosition(event) {
   const tooltip = document.getElementById('commit-tooltip');
-  tooltip.style.left = `${event.clientX + 10}px`; // Added 10px offset
-  tooltip.style.top = `${event.clientY + 10}px`;  // Added 10px offset
+  tooltip.style.left = `${event.clientX + 10}px`;
+  tooltip.style.top = `${event.clientY + 10}px`;
 }
 
 // --- 4. UI RENDERING ---
@@ -148,6 +145,10 @@ function renderScatterPlot(data, commits) {
     .domain([0, 24])
     .range([usableArea.bottom, usableArea.top]);
 
+  // Step 4.1 & 4.2: Calculate line extent and create a Square Root scale
+  const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+  const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
+
   const gridlines = svg
     .append('g')
     .attr('class', 'gridlines')
@@ -172,23 +173,30 @@ function renderScatterPlot(data, commits) {
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(yAxis);
 
+  // Step 4.3: Sort commits by size (descending) so smaller dots are on top
+  const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+
   const dots = svg.append('g').attr('class', 'dots');
 
   dots
     .selectAll('circle')
-    .data(commits)
+    .data(sortedCommits) 
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac))
-    .attr('r', 5)
+    .attr('r', (d) => rScale(d.totalLines)) 
     .attr('fill', 'steelblue')
-    .style('fill-opacity', 0.7)
+    .style('fill-opacity', 0.7) 
     .on('mouseenter', (event, commit) => {
+        // Step 4.1: Highlight with full opacity on hover
+        d3.select(event.currentTarget).style('fill-opacity', 1); 
         renderTooltipContent(commit);
         updateTooltipVisibility(true);
-        updateTooltipPosition(event); // Step 3.4
+        updateTooltipPosition(event);
     })
-    .on('mouseleave', () => {
+    .on('mouseleave', (event) => {
+        // Reset to base transparency
+        d3.select(event.currentTarget).style('fill-opacity', 0.7); 
         updateTooltipVisibility(false);
     });
 }
