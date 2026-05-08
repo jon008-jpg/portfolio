@@ -3,6 +3,7 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 // --- 1. GLOBAL STATE ---
 let data = [];
 let commits = [];
+let xScale, yScale; 
 
 // --- 2. DATA LOADING ---
 async function loadData() {
@@ -112,7 +113,87 @@ function displayStats() {
   });
 }
 
-// --- 5. SCATTERPLOT RENDERING ---
+// --- 5. BRUSHING LOGIC ---
+function brushed(event) {
+  const selection = event.selection;
+  
+  d3.selectAll('circle').classed('selected', (d) => 
+    isCommitSelected(selection, d)
+  );
+
+  renderSelectionCount(selection);
+  
+  // Step 5.6: Final addition to brushed function
+  renderLanguageBreakdown(selection);
+}
+
+function isCommitSelected(selection, commit) {
+  if (!selection) return false;
+
+  const [[x0, y0], [x1, y1]] = selection;
+  const x = xScale(commit.datetime);
+  const y = yScale(commit.hourFrac);
+
+  return x >= x0 && x <= x1 && y >= y0 && y <= y1;
+}
+
+function renderSelectionCount(selection) {
+  const countElement = document.getElementById('selection-count');
+  
+  const selectedCommits = selection
+    ? commits.filter((d) => isCommitSelected(selection, d))
+    : [];
+
+  countElement.textContent = `${
+    selectedCommits.length || 'No'
+  } commits selected`;
+
+  return selectedCommits;
+}
+
+// Step 5.6: Showing language breakdown
+function renderLanguageBreakdown(selection) {
+  const selectedCommits = selection
+    ? commits.filter((d) => isCommitSelected(selection, d))
+    : [];
+  const container = document.getElementById('language-breakdown');
+
+  if (selectedCommits.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+
+  const lines = selectedCommits.flatMap((d) => d.lines);
+
+  // Use d3.rollup to count lines per language
+  const breakdown = d3.rollup(
+    lines,
+    (v) => v.length,
+    (d) => d.type,
+  );
+
+  // Update DOM with breakdown
+  container.innerHTML = '';
+
+  for (const [language, count] of breakdown) {
+    const proportion = count / lines.length;
+    const formatted = d3.format('.1~%')(proportion);
+
+    container.innerHTML += `
+            <div class="stat-pair">
+                <dt>${language}</dt>
+                <dd>${count} lines (${formatted})</dd>
+            </div>
+        `;
+  }
+}
+
+function createBrushSelector(svg) {
+  svg.call(d3.brush().on('start brush end', brushed));
+  svg.selectAll('.dots, .overlay ~ *').raise();
+}
+
+// --- 6. SCATTERPLOT RENDERING ---
 function renderScatterPlot(data, commits) {
   const width = 1000;
   const height = 600;
@@ -134,18 +215,17 @@ function renderScatterPlot(data, commits) {
     height: height - margin.top - margin.bottom,
   };
 
-  const xScale = d3
+  xScale = d3
     .scaleTime()
     .domain(d3.extent(commits, (d) => d.datetime))
     .range([usableArea.left, usableArea.right])
     .nice();
 
-  const yScale = d3
+  yScale = d3
     .scaleLinear()
     .domain([0, 24])
     .range([usableArea.bottom, usableArea.top]);
 
-  // Step 4.1 & 4.2: Calculate line extent and create a Square Root scale
   const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
   const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
 
@@ -166,14 +246,15 @@ function renderScatterPlot(data, commits) {
     .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
 
   svg.append('g')
+    .attr('class', 'axis x-axis')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
     .call(xAxis);
 
   svg.append('g')
+    .attr('class', 'axis y-axis')
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(yAxis);
 
-  // Step 4.3: Sort commits by size (descending) so smaller dots are on top
   const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
 
   const dots = svg.append('g').attr('class', 'dots');
@@ -188,15 +269,15 @@ function renderScatterPlot(data, commits) {
     .attr('fill', 'steelblue')
     .style('fill-opacity', 0.7) 
     .on('mouseenter', (event, commit) => {
-        // Step 4.1: Highlight with full opacity on hover
         d3.select(event.currentTarget).style('fill-opacity', 1); 
         renderTooltipContent(commit);
         updateTooltipVisibility(true);
         updateTooltipPosition(event);
     })
     .on('mouseleave', (event) => {
-        // Reset to base transparency
         d3.select(event.currentTarget).style('fill-opacity', 0.7); 
         updateTooltipVisibility(false);
     });
+
+  createBrushSelector(svg);
 }

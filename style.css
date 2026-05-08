@@ -270,3 +270,24 @@ circle:hover {
     transform: scale(1.5);
     fill: var(--color-accent); 
 }
+
+/* The "Marching Ants" animation */
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8; /* Sum of dash (5) and gap (3) */
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3; /* Creates the dashed effect: 5px line, 3px gap */
+  animation: marching-ants 2s linear infinite; /* Loops the offset animation */
+}
+
+/* Highlight dots that fall within the brush selection */
+circle.selected {
+  fill: #ff6b6b; /* A vibrant coral/red to contrast with steelblue */
+  fill-opacity: 1 !important; /* Ensure they are fully visible */
+}
