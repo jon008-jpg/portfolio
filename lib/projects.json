@@ -1,74 +1,86 @@
 [
   {
-    "title": "DSC106 Project 2: Deceptive Visualizations",
+    "title": "Bikewatching: Boston Bike Traffic",
     "year": "2026",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Conducted Exploratory Data Analysis to create visualizations that intentionally mislead viewers about the true trends in a dataset, demonstrating the importance of ethical data representation."
+    "image": "images/bikewatching-screenshot.png",
+    "description": "An interactive visualization of bicycle traffic patterns across Greater Boston, analyzing peak hours and high-density routes to improve urban planning.",
+    "url": "https://jon008-jpg.github.io/bikewatching/"
   },
   {
     "title": "Portfolio Site Development",
     "year": "2026",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Built a responsive personal portfolio using modern JavaScript, CSS grid, and dynamic data fetching from the GitHub API."
+    "description": "Built a responsive personal portfolio using modern JavaScript, CSS grid, and dynamic data fetching from the GitHub API.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "DSC106 Project 1: Food Processing Visualization",
     "year": "2026",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Designed a captivating visualization that ranks retail food items based on their level of processing and nutritional value."
+    "description": "Designed a captivating visualization that ranks retail food items based on their level of processing and nutritional value.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "Power Outage Analysis",
     "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Investigated geographic and seasonal patterns in major U.S. power outages to determine the most significant causes of disruption."
+    "description": "Investigated geographic and seasonal patterns in major U.S. power outages to determine the most significant causes of disruption.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "Customer Segmentation via K-Means",
     "year": "2023",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Applied unsupervised learning to categorize e-commerce customers into distinct personas based on purchasing frequency and total spend."
+    "description": "Applied unsupervised learning to categorize e-commerce customers into distinct personas based on purchasing frequency and total spend.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "Predictive Modeling for Sales",
     "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Built a multi-linear regression model to forecast quarterly sales figures based on historical performance and market indicators."
+    "description": "Built a multi-linear regression model to forecast quarterly sales figures based on historical performance and market indicators.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "Sentiment Analysis on Social Media",
     "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Utilized natural language processing (NLP) to classify public sentiment on trending technology topics using the Twitter API."
+    "description": "Utilized natural language processing (NLP) to classify public sentiment on trending technology topics using the Twitter API.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "Educational Tech Kit Design",
     "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Developed a modular hardware kit intended to teach elementary school students the basics of electronic circuits and sustainable design."
+    "description": "Developed a modular hardware kit intended to teach elementary school students the basics of electronic circuits and sustainable design.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "Image Compression via PCA",
     "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Implemented Principal Component Analysis to reduce image file sizes while preserving essential visual features and variance."
+    "description": "Implemented Principal Component Analysis to reduce image file sizes while preserving essential visual features and variance.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "Neural Network for Digit Recognition",
     "year": "2023",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Trained a convolutional neural network on the MNIST dataset to achieve high accuracy in handwritten digit identification."
+    "description": "Trained a convolutional neural network on the MNIST dataset to achieve high accuracy in handwritten digit identification.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "Autonomous Pathfinding Algorithm",
     "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Simulated an A* search algorithm for an autonomous robot navigating through a dynamic maze with moving obstacles."
+    "description": "Simulated an A* search algorithm for an autonomous robot navigating through a dynamic maze with moving obstacles.",
+    "url": "https://vis-society.github.io/labs/2/"
   },
   {
     "title": "Database Schema Optimization",
     "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Redesigned a relational database for a mock library system to reduce query latency and ensure data integrity compliance."
+    "description": "Redesigned a relational database for a mock library system to reduce query latency and ensure data integrity compliance.",
+    "url": "https://vis-society.github.io/labs/2/"
   }
 ]
