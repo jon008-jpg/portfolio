@@ -112,14 +112,25 @@ export async function fetchJSON(url) {
 
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
     containerElement.innerHTML = '';
+
     projects.forEach(project => {
         const article = document.createElement('article');
+
+        // Logic to handle image paths: 
+        // If the path is relative (doesn't start with http), prepend BASE_PATH
+        const imagePath = project.image.startsWith('http') 
+            ? project.image 
+            : BASE_PATH + project.image.replace(/^\.\.\//, ''); // Removes ../ if you added it manually
+
         article.innerHTML = `
             <${headingLevel}>${project.title}</${headingLevel}>
-            <img src="${project.image}" alt="${project.title}">
+            <img src="${imagePath}" alt="${project.title}">
             <div class="project-info">
                 <p>${project.description}</p>
-                <p class="project-year">c. ${project.year}</p>
+                <div class="project-meta">
+                    <p class="project-year">c. ${project.year}</p>
+                    ${project.url ? `<a href="${project.url}" target="_blank" class="project-link">View Project ↗</a>` : ''}
+                </div>
             </div>
         `;
         containerElement.appendChild(article);

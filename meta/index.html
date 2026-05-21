@@ -15,6 +15,15 @@
 
     <section>
         <h2>Summary</h2>
+        
+        <div id="time-filter" style="display: flex; flex: 1; align-items: baseline; margin-bottom: 20px;">
+            <label style="display: flex; flex: 1; width: 100%;">
+                Show commits until:
+                <input type="range" id="commit-progress" min="0" max="100" value="100" style="margin: 0 10px; flex: 1;">
+                <time id="commit-time" style="margin-left: auto; font-variant-numeric: tabular-nums;"></time>
+            </label>
+        </div>
+
         <div id="stats"></div>
     </section>
 
@@ -22,7 +31,6 @@
         <h2>Commits By Time of Day</h2>
         <p id="selection-count">No commits selected</p>
         
-        <!-- Step 5.6: Language Breakdown -->
         <dl id="language-breakdown" class="stats"></dl>
 
         <div id="chart"></div>
@@ -35,9 +43,7 @@
             <dd id="commit-date"></dd>
 
             <dt>Time</dt>
-            <dd id="commit-time"></dd>
-
-            <dt>Author</dt>
+            <dd id="commit-time-tooltip"></dd> <dt>Author</dt>
             <dd id="commit-author"></dd>
 
             <dt>Lines Edited</dt>

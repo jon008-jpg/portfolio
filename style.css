@@ -291,3 +291,11 @@ circle.selected {
   fill: #ff6b6b; /* A vibrant coral/red to contrast with steelblue */
   fill-opacity: 1 !important; /* Ensure they are fully visible */
 }
+
+circle {
+  transition: all 200ms, r calc(var(--r) * 100ms);
+  
+  @starting-style {
+    r: 0;
+  }
+}
