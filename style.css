@@ -321,10 +321,17 @@ circle {
 }
 
 /* --- SCROLLYTELLING LAYOUT --- */
-#scrolly-1, #scrolly-2 {
+#scrolly-1 {
   position: relative;
   display: flex;
   gap: 1rem;
+}
+
+#scrolly-2 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  flex-direction: row-reverse; /* Swaps the order for Codebase Evolution */
 }
 
 #scrolly-1 > *, #scrolly-2 > * {
